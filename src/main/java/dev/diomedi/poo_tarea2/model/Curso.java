@@ -49,4 +49,5 @@ public abstract class Curso {
         informacion += "Codigo: " + this.codigoCurso + "| Duracion: " + this.duracion;
         return informacion;
     }
+    public abstract String getTipoCurso();
 }

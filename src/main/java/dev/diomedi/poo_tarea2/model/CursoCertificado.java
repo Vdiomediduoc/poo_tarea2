@@ -72,4 +72,9 @@ public class CursoCertificado extends Curso implements ConDiploma {
         }
 
     }
+    @Override
+    public String getTipoCurso() {
+        String tipoCurso = "Tipo: Curso Certificado";
+        return tipoCurso;
+    }
 }

@@ -33,4 +33,9 @@ public class CursoLibre extends Curso {
         return detalleCurso;
 
     }
+    @Override
+    public String getTipoCurso(){
+        String tipoCurso = "Tipo: Curso Libre";
+        return tipoCurso;
+    }
 }

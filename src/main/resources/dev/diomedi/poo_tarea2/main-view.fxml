@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.diomedi.poo_tarea2.controller.MainController">
    <children>
       <HBox layoutX="14.0" layoutY="14.0" prefHeight="69.0" prefWidth="727.0">
          <padding>
@@ -51,7 +51,7 @@
                   <Font name="System Italic" size="16.0" />
                </font>
             </Label>
-            <ChoiceBox id="tipoBox" prefHeight="25.0" prefWidth="228.0" />
+            <ChoiceBox id="tipoBox" prefHeight="25.0" prefWidth="228.0" onAction="#onSeleccionarTipo" />
             <Label layoutX="10.0" layoutY="10.0" text="Codigo del Curso:">
                <font>
                   <Font size="14.0" />
@@ -104,12 +104,12 @@
             </CheckBox>
             <HBox prefHeight="42.0" prefWidth="221.0">
                <children>
-                  <Button fx:id="guardarButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Guardar">
+                  <Button fx:id="guardarButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Guardar" onAction="#onGuardar">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="limpiarButton" mnemonicParsing="false" prefWidth="90.0" text="Limpiar">
+                  <Button fx:id="limpiarButton" mnemonicParsing="false" prefWidth="90.0" text="Limpiar" onAction="#onLimpiar">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -129,7 +129,7 @@
                   <TableColumn id="precioColumn" prefWidth="104.0" text="Precio" />
               </columns>
             </TableView>
-            <Button fx:id="eliminarButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" text="Eliminar">
+            <Button fx:id="eliminarButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" text="Eliminar" onAction="#onEliminar">
                <VBox.margin>
                   <Insets left="117.0" top="25.0" />
                </VBox.margin>
