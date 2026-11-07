@@ -32,7 +32,7 @@
             </VBox>
             <VBox prefHeight="118.0" prefWidth="386.0">
                <children>
-                  <Label id="alertaLabel" alignment="BOTTOM_RIGHT" text="Alertas" textFill="RED" visible="false">
+                  <Label fx:id="alertaLabel" alignment="BOTTOM_RIGHT" text="Alertas" textFill="RED" visible="false">
                      <VBox.margin>
                         <Insets left="20.0" />
                      </VBox.margin>
@@ -51,25 +51,25 @@
                   <Font name="System Italic" size="16.0" />
                </font>
             </Label>
-            <ChoiceBox id="tipoBox" prefHeight="25.0" prefWidth="228.0" onAction="#onSeleccionarTipo" />
+            <ChoiceBox fx:id="tipoBox" prefHeight="25.0" prefWidth="228.0" onAction="#onSeleccionarTipo" />
             <Label layoutX="10.0" layoutY="10.0" text="Codigo del Curso:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField id="codigoText" />
+            <TextField fx:id="codigoText" />
             <Label layoutX="10.0" layoutY="60.0" text="Duracion:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField id="duracionText" layoutX="10.0" layoutY="80.0" />
+            <TextField fx:id="duracionText" layoutX="10.0" layoutY="80.0" />
             <Label layoutX="10.0" layoutY="105.0" text="Cupos Maximos:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField id="cuposText" layoutX="10.0" layoutY="125.0" />
+            <TextField fx:id="cuposText" layoutX="10.0" layoutY="125.0" />
             <Label layoutX="10.0" layoutY="10.0" text="Curso Libre:" underline="true">
                <font>
                   <Font name="System Italic" size="16.0" />
@@ -80,7 +80,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField id="cantidadIncritosText" layoutX="10.0" layoutY="170.0" />
+            <TextField fx:id="cantidadInscritosText" layoutX="10.0" layoutY="170.0" />
             <Label layoutX="10.0" layoutY="195.0" text="Curso Certificado:" underline="true">
                <font>
                   <Font name="System Italic" size="16.0" />
@@ -91,13 +91,13 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField id="entidadCertificadoraText" layoutX="10.0" layoutY="220.0" />
-            <CheckBox id="alDiaBox" mnemonicParsing="false" text="Tiene la Evaluacion al Dia">
+            <TextField fx:id="entidadCertificadoraText" layoutX="10.0" layoutY="220.0" />
+            <CheckBox fx:id="alDiaBox" mnemonicParsing="false" text="Tiene la Evaluacion al Dia">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
             </CheckBox>
-            <CheckBox id="emitidoBox" mnemonicParsing="false" text="Tiene el Diploma Emitido">
+            <CheckBox fx:id="emitidoBox" mnemonicParsing="false" text="Tiene el Diploma Emitido">
                <VBox.margin>
                   <Insets bottom="10.0" top="5.0" />
                </VBox.margin>
@@ -120,13 +120,13 @@
       </VBox>
       <VBox layoutX="257.0" layoutY="83.0" prefHeight="408.0" prefWidth="485.0">
          <children>
-            <TableView id="cursosView" prefHeight="329.0" prefWidth="440.0">
+            <TableView fx:id="cursosView" prefHeight="329.0" prefWidth="440.0">
               <columns>
-                <TableColumn id="tipoColumn" prefWidth="103.0" text="Tipo de Curso" />
-                <TableColumn id="codigoColumn" prefWidth="70.0" text="Codigo" />
-                  <TableColumn id="duracionColumn" prefWidth="76.0" text="Duracion" />
-                  <TableColumn id="cuposColumn" prefWidth="104.0" text="Cupos Maximos" />
-                  <TableColumn id="precioColumn" prefWidth="104.0" text="Precio" />
+                <TableColumn fx:id="tipoColumn" prefWidth="103.0" text="Tipo de Curso" />
+                <TableColumn fx:id="codigoColumn" prefWidth="70.0" text="Codigo" />
+                  <TableColumn fx:id="duracionColumn" prefWidth="76.0" text="Duracion" />
+                  <TableColumn fx:id="cuposColumn" prefWidth="104.0" text="Cupos Maximos" />
+                  <TableColumn fx:id="precioColumn" prefWidth="104.0" text="Precio" />
               </columns>
             </TableView>
             <Button fx:id="eliminarButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" text="Eliminar" onAction="#onEliminar">

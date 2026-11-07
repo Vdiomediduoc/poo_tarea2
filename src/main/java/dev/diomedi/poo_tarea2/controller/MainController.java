@@ -34,21 +34,27 @@ public class MainController {
     private Label alertaLabel;
     @FXML
     private TextField codigoText;
+    @FXML
     private TextField duracionText;
+    @FXML
     private TextField cuposText;
+    @FXML
     private TextField cantidadInscritosText;
+    @FXML
     private TextField entidadCertificadoraText;
+    @FXML
     private CheckBox alDiaBox;
+    @FXML
     private CheckBox emitidoBox;
     @FXML
     private TableView<Curso> cursosView;
     @FXML
     private TableColumn<Curso, String> tipoColumn;
-    private TableColumn<Curso, String> codigoColumn;
-    private TableColumn<Curso, Integer> duracionColumn;
-    private TableColumn<Curso, Integer> cuposColumn;
-    private TableColumn<Curso, Double> precioColumn;
-    private final ObservableList<Curso> cursosObs = FXCollections.observableArrayList();
+    @FXML private TableColumn<Curso, String> codigoColumn;
+    @FXML private TableColumn<Curso, Integer> duracionColumn;
+    @FXML private TableColumn<Curso, Integer> cuposColumn;
+    @FXML private TableColumn<Curso, Double> precioColumn;
+    @FXML private final ObservableList<Curso> cursosObs = FXCollections.observableArrayList();
 
     @FXML public void onSeleccionarTipo() {
         String choice = tipoBox.getValue();
@@ -58,17 +64,19 @@ public class MainController {
                 this.entidadCertificadoraText.setDisable(true);
                 this.alDiaBox.setDisable(true);
                 this.emitidoBox.setDisable(true);
+                break;
             case CLASE_CERTIFICADA:
                 this.cantidadInscritosText.setDisable(true);
                 this.entidadCertificadoraText.setDisable(false);
                 this.alDiaBox.setDisable(false);
                 this.emitidoBox.setDisable(false);
+                break;
             default:
                 this.cantidadInscritosText.setDisable(true);
                 this.entidadCertificadoraText.setDisable(true);
                 this.alDiaBox.setDisable(true);
                 this.emitidoBox.setDisable(true);
-
+                break;
         }
     }
     private void setAlerta(String tipo, String mensaje) {
@@ -81,12 +89,15 @@ public class MainController {
             case ALERTA_EXITO, ALERTA_ELIMINAR:
                 this.alertaLabel.setVisible(true);
                 this.alertaLabel.setTextFill(Color.GREEN);
+                break;
             case ALERTA_LECTURA, ALERTA_NO_SELECCIONADO,  ALERTA_NO_VALIDO, ALERTA_ESCRITURA:
                 this.alertaLabel.setVisible(true);
                 this.alertaLabel.setTextFill(Color.RED);
+                break;
             default:
                 this.alertaLabel.setVisible(false);
                 this.alertaLabel.setTextFill(Color.BLACK);
+                break;
         }
         this.alertaLabel.setText(mensaje);
     }
@@ -121,9 +132,13 @@ public class MainController {
         Curso curso;
         try {
             String tipo = tipoBox.getValue();
-            String codigo = codigoColumn.getText();
-            int duracion = Integer.parseInt(duracionColumn.getText());
-            int cupos = Integer.parseInt(this.cuposColumn.getText());
+            if (tipo == null) {
+                this.setAlerta(ALERTA_NO_SELECCIONADO, "Seleccione un tipo de curso");
+                return;
+            }
+            String codigo = codigoText.getText();
+            int duracion = Integer.parseInt(duracionText.getText());
+            int cupos = Integer.parseInt(this.cuposText.getText());
             switch(tipo){
                 case CLASE_LIBRE:
                     int cantidadInscritos = Integer.parseInt(this.cantidadInscritosText.getText());
@@ -132,6 +147,7 @@ public class MainController {
                         return;
                     }
                     curso = new CursoLibre(codigo, duracion, cupos,cantidadInscritos);
+                    break;
                 case CLASE_CERTIFICADA:
                     String entidad = entidadCertificadoraText.getText();
                     boolean isAlDia = alDiaBox.isSelected();

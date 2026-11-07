@@ -26,34 +26,44 @@ public class GsonCursoDao<T extends Curso> implements CursoDao<T> {
         this.archivo = Paths.get(archivo);
         this.tipoLista = TypeToken.getParameterized(List.class, clase).getType();
     }
+
     @Override
     public List<T> leer() {
-        if(Files.notExists(this.archivo)) {
+        if (Files.notExists(this.archivo)) {
             return new ArrayList<>();
         }
         try (Reader lector = Files.newBufferedReader(this.archivo, StandardCharsets.UTF_8)) {
             List<T> cursos = gson.fromJson(lector, this.tipoLista);
-            if(cursos == null) {
-            return new ArrayList<>();}
+            if (cursos == null) {
+                return new ArrayList<>();
+            }
             List<T> validas = new ArrayList<>();
             for (T curso : cursos) {
-                if ( curso != null && curso.getCodigoCurso()!= null){
+                if (curso != null && curso.getCodigoCurso() != null) {
                     validas.add(curso);
                 }
             }
             return validas;
-        } catch (IOException e){
-        throw  new PercistenciaExeption(PercistenciaExeption.ALERTA_LECTURA, e);
+        } catch (IOException e) {
+            throw new PercistenciaExeption(PercistenciaExeption.ALERTA_LECTURA, e);
+        }
     }
 
-    }
     @Override
-    public void guardar(List<T> Cursos) {
-        try(Writer escritor = Files.newBufferedWriter(this.archivo, StandardCharsets.UTF_8)){
-            this.gson.toJson(Cursos, this.tipoLista, escritor);
-        }catch (IOException | JsonIOException e){
+    public void guardar(List<T> cursos) {
+        if (cursos == null) {
+            cursos = new ArrayList<>();
+        }
+        try {
+            if (this.archivo.getParent() != null && Files.notExists(this.archivo.getParent())) {
+                Files.createDirectories(this.archivo.getParent());
+            }
+
+            try (Writer escritor = Files.newBufferedWriter(this.archivo, StandardCharsets.UTF_8)) {
+                this.gson.toJson(cursos, escritor);
+            }
+        } catch (IOException | JsonIOException e) {
             throw new PercistenciaExeption(PercistenciaExeption.ALERTA_ESCRITURA, e);
         }
-
     }
 }
